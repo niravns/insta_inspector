@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Instagram Watchlist Capture",
+  "version": "1.0.0",
+  "description": "Save Reel links you visit on Instagram.com to your local Watchlist.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://www.instagram.com/*",
+    "http://127.0.0.1:8765/*"
+  ],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://www.instagram.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_title": "Instagram Watchlist Capture",
+    "default_popup": "popup.html"
+  }
+}
