@@ -11,7 +11,7 @@ flowchart LR
 	D[Popup] -->|Pause or resume| E[(Chrome local storage)]
 	C <--> E
 	C -->|POST /capture| F[Local Python bridge<br/>127.0.0.1:8765]
-	F -->|add_reel(url)| G[Existing Watchlist]
+	F -->|Save Reel URL| G[Existing Watchlist]
 ```
 
 ## Start the local helper
