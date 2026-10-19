@@ -2,6 +2,18 @@
 
 This Chrome extension notices when the active Instagram.com page moves to a Reel and sends that Reel URL to the existing local Watchlist. It does not read the video, captions, messages, or password. Capture can be paused from the extension popup.
 
+## Data flow
+
+```mermaid
+flowchart LR
+	A[Instagram Reel page] -->|Reel URL| B[Content script]
+	B -->|reel-visited| C[Extension service worker]
+	D[Popup] -->|Pause or resume| E[(Chrome local storage)]
+	C <--> E
+	C -->|POST /capture| F[Local Python bridge<br/>127.0.0.1:8765]
+	F -->|add_reel(url)| G[Existing Watchlist]
+```
+
 ## Start the local helper
 
 In Terminal, run:
